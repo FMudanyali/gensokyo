@@ -8,7 +8,47 @@ in
     ];
 
     home-manager.users.furkan = {
-        programs = {
+	programs = {
+	    neovim = {
+		enable = true;
+		viAlias = true;
+		vimAlias = true;
+		withPython3 = true;
+		withRuby = true;
+		extraConfig = ''
+                    set number
+                    set tabstop=4
+                    set softtabstop=4
+                    set shiftwidth=4
+                    set expandtab
+                    set autoindent
+                    set copyindent
+                    set showmatch
+                    set wildmenu
+                    set cursorline
+                    set showcmd
+		    set termguicolors
+		    let g:context_nvim_no_redraw = 1
+		'';
+		plugins = with pkgs.vimPlugins;
+		let
+		    context-vim = pkgs.vimUtils.buildVimPlugin {
+			name = "context-vim";
+			src = pkgs.fetchFromGitHub {
+			    owner = "wellle";
+			    repo = "context.vim";
+			    rev = "e38496f1eb5bb52b1022e5c1f694e9be61c3714c";
+			    sha256 = "1iy614py9qz4rwk9p4pr1ci0m1lvxil0xiv3ymqzhqrw5l55n346";
+			};
+		    };
+		in [
+		    context-vim
+		    editorconfig-vim
+		    vim-airline
+		    vim-elixir
+		    vim-nix
+		];
+	    };
             git = {
                 enable = true;
                 userName = "FMudanyali";
@@ -35,18 +75,18 @@ in
                 }
                 ];
                 initExtra = ''
-autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-setopt autocd
-stty stop undef
-setopt interactive_comments
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)
-echo -ne '\e[5 q'
-preexec() { echo -ne '\e[5 q' ;}
+                    autoload -U colors && colors
+                    PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+                    setopt autocd
+                    stty stop undef
+                    setopt interactive_comments
+                    autoload -U compinit
+                    zstyle ':completion:*' menu select
+                    zmodload zsh/complist
+                    compinit
+                    _comp_options+=(globdots)
+                    echo -ne '\e[5 q'
+                    preexec() { echo -ne '\e[5 q' ;}
                 '';
             };
         };
