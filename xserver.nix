@@ -6,16 +6,16 @@
     dpi = 96;
     videoDrivers = ["nvidia"];
     # Nvidia specific, for screen tearing
-	  deviceSection = ''
-	    Option     "MetaModes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-  	  Option     "AllowIndirectGLXProtocol" "off"
-  	  Option     "TripleBuffer" "on"
-	  '';
-	  desktopManager = {
+    deviceSection = ''
+      Option     "MetaModes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+      Option     "AllowIndirectGLXProtocol" "off"
+      Option     "TripleBuffer" "on"
+    '';
+    desktopManager = {
       xterm.enable = false;
       xfce.enable = true;
-	  };
-	  displayManager = {
+    };
+    displayManager = {
       autoLogin.enable = true;
       autoLogin.user = "furkan";
       defaultSession = "xfce";
