@@ -2,11 +2,12 @@
 { pkgs, ... }:
 
 {
-  fonts.fontconfig.defaultFonts.monospace = [ "IBM Plex Mono" ];
+  fonts.fontconfig.defaultFonts.monospace = [ "Fantasque Sans Mono" ];
   fonts.fontconfig.defaultFonts.sansSerif = [ "IBM Plex Sans" ];
   fonts.fontconfig.defaultFonts.serif = [ "IBM Plex Serif" ];
 
   fonts.fonts = with pkgs; [
+    fantasque-sans-mono
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji

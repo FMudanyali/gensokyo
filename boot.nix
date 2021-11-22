@@ -3,7 +3,7 @@
 {
   boot = {
     zfs.enableUnstable = true;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod;
 
     loader = {
       systemd-boot.enable = true;

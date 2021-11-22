@@ -18,8 +18,10 @@
     _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd";
   };
 
+  #hardware.xpadneo.enable = true;
   hardware.opengl = {
     enable = true;
+    driSupport32Bit = true;
     extraPackages = with pkgs; [
       vaapiVdpau
       libvdpau-va-gl

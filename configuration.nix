@@ -7,7 +7,6 @@
     ./services.nix
     ./packages.nix
     ./fonts.nix
-    ./home.nix
     ./networking.nix
     ./xserver.nix
     ./system.nix
